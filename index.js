@@ -12,40 +12,53 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
     alert('Even!');
     console.log('Nobody won this round!')
-    return roundPoints = '!add';
+    return roundPoints = 'even';
   }
   else if (
   playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors'
   || playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock'
   || playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase()) {
     alert(win);
-    console.log('Player won this round!');
-    return roundPoints = 'add';
+    console.log('You won this round!');
+    return roundPoints = 'addPlayerPoint';
     }
   else {
     alert(loose);
     console.log('Computer won this round!');
-    return roundPoints = '!add';
+    return roundPoints = 'addComputerPoint';
   }
 }
 
 function game() {
-  let points = 0;
+  let playerPoints = 0;
+  let computerPoints = 0;
+
   for (let i = 0; i < 5; i++) {
     playRound(playerPrompt(), getComputerChoice()); 
-    if (roundPoints === 'add') {
-      points = ++points;
+    if (roundPoints === 'addPlayerPoint') {
+      playerPoints = ++playerPoints;
     } 
+    else if (roundPoints === 'addComputerPoint') {
+      computerPoints = ++computerPoints;
+    }
+    else {
+      computerPoints = ++computerPoints;
+      playerPoints = ++playerPoints;
+    }
     
-    console.log(`You have ${points}/5 points!`);
+    console.log(`You ${playerPoints}/${computerPoints} Computer`);
   }
-  if (points > 2) {
-    console.log(`You won the game, with ${points}/5 points!`);
+  if (playerPoints > computerPoints) {
+    console.log(`You won the game, with ${playerPoints}/${computerPoints} points!`);
     alert(`You won the game!`);
   }
-  else {
-    console.log(`You lost the game, with ${points}/5 points!`);
+  else if (playerPoints < computerPoints){
+    console.log(`You lost the game, with ${playerPoints}/${computerPoints} points!`);
     alert('You lost the game!');
+  }
+  else {
+    console.log('Nobody won the game!');
+    console.log(`You ${playerPoints}/${computerPoints} Computer`);
   }
 }
 
