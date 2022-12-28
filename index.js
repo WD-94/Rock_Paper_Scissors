@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let points = 0;
   for (let i = 0; i < 5; i++) {
-    playRound(prompt('Choose either: Rock, Paper, Scissors'), getComputerChoice()); 
+    playRound(playerPrompt(), getComputerChoice()); 
     if (roundPoints === 'add') {
       points = ++points;
     } 
@@ -47,6 +47,17 @@ function game() {
     console.log(`You lost the game, with ${points}/5 points!`);
     alert('You lost the game!');
   }
+}
+
+function playerPrompt() {
+  let playerInput;
+  const regPlayerInput = new RegExp(/^paper$|^rock$|^scissors$/i);
+  playerInput = prompt('Choose either: Rock, Paper, Scissors');
+  while (!regPlayerInput.test(playerInput)) {
+    alert('Input needs to be on of these options: Rock, Paper, Scissors!');
+    playerInput = prompt('Choose either: Rock, Paper, Scissors');
+  }
+  return playerInput;
 }
 
 game()
