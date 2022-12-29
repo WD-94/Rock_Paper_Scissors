@@ -64,7 +64,7 @@ function game() {
 
 function playerPrompt() {
   let playerInput;
-  const regPlayerInput = new RegExp(/^paper$|^rock$|^scissors$/i);
+  const regPlayerInput = /^paper$|^rock$|^scissors$/i;
   playerInput = prompt('Choose either: Rock, Paper, Scissors');
   while (!regPlayerInput.test(playerInput)) {
     alert('Input needs to be on of these options: Rock, Paper, Scissors!');
