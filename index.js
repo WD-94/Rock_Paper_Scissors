@@ -3,7 +3,9 @@ function getComputerChoice() {
   return choice[Math.floor(Math.random() * choice.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(
+  playerSelection, 
+  computerSelection) {
   let playerSelect = playerSelection.toLowerCase();
   playerSelect = playerSelect.charAt(0).toUpperCase() + playerSelect.slice(1);
   let loose = `You Lose! ${computerSelection} beats ${playerSelect}`;
@@ -34,7 +36,10 @@ function game() {
   let computerPoints = 0;
 
   for (let i = 0; i < 5; i++) {
-    playRound(playerPrompt(), getComputerChoice()); 
+    playRound(
+      playerPrompt(), 
+      getComputerChoice()
+      ); 
     if (roundPoints === 'addPlayerPoint') {
       playerPoints = ++playerPoints;
     } 
