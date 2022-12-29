@@ -17,9 +17,9 @@ function playRound(
     return roundPoints = 'even';
   }
   else if (
-  playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors'
-  || playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock'
-  || playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase()) {
+  (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors')
+  || (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock')
+  || (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase())) {
     alert(win);
     console.log('You won this round!');
     return roundPoints = 'addPlayerPoint';
